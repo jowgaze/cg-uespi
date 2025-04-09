@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>POLYGON</title>
+        <link rel="stylesheet" href="../style/style.css">
+        <script src="MV.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <p>Execute o código no console utilizando a função <strong>pointsIsPolygon(points)</strong> para pontos</br>
+            predefinidos na questão, ou utilize outro conjunto de pontos do tipo vec3.</p>
+        </div>
+        <script>
+            let p1 = vec3(1.0, 0.0, 0.0);
+            let p2 = vec3(0.0, 2.0, 1.0);
+            let p3 = vec3(1.0, 3.0, 2.0);
+            let p4 = vec3(3.0, 2.0, 1.0);
+            let p5 = vec3(2.0, 0.0, 1.0);
+
+            let points = [p1, p2, p3, p4, p5];
+
+            function pointsIsPolygon(points) {
+                let is = true;
+
+                if (points.length > 3) {
+                    for (let i = 3; i < points.length && is; i++) {
+                        is = isOnThePlane(points[0], points[1], points[2], points[i]);
+                    }
+                } else if (points.length == 3) {
+                    is = isTriangle(points[0], points[1], points[2]);
+                } else return "Enter at least 3 points";
+
+                return is;
+            }
+
+            function isOnThePlane(p1, p2, p3, p4) {
+                let a = subtract(p2, p1);
+                let b = subtract(p3, p1);
+                let c = subtract(p4, p1);
+
+                let ab = cross(a, b);
+
+                return dot(ab, c) !== 0;
+            }
+
+            function isTriangle(p1, p2, p3) {
+                let a = subtract(p2, p1);
+                let b = subtract(p3, p1);
+
+                let crossProduct = a[0] * b[1] - a[1] * b[0];
+
+                return crossProduct !== 0;
+            }
+        </script>
+    </body>
+</html>
