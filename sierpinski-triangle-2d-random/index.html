@@ -3,13 +3,23 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../style/style.css">
+        <link rel="stylesheet" href="../style/style.css" />
         <title>SIERPINSKI TRIANGLE</title>
     </head>
-    <body>
-        <canvas id="gl-canvas" style="border: 2px solid black" width="512" height="512">
-            Sorry; your web browser does not support HTML5's canvas element.
-        </canvas>
+    <body style="height: 90vh;">
+        <div class="container">
+            <canvas
+                id="gl-canvas"
+                style="border: 2px solid black"
+                width="400"
+                height="400"
+            >
+                Sorry; your web browser does not support HTML5's canvas element.
+            </canvas>
+            <div class="home">
+                <a href="../index.html">Voltar</a>
+            </div>
+        </div>
 
         <script id="vertex-shader" type="x-shader/x-vertex">
             #version 300 es
