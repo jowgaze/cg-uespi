@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../style/style.css" />
+        <title>SIERPINSKI TRIANGLE</title>
+    </head>
+    <body style="height: 90vh;">
+        <div class="container">
+            <canvas
+                id="gl-canvas"
+                style="border: 2px solid black"
+                width="400"
+                height="400"
+            >
+                Sorry; your web browser does not support HTML5's canvas element.
+            </canvas>
+            <div class="home">
+                <a href="../index.html">Voltar</a>
+            </div>
+        </div>
+
+        <script id="vertex-shader" type="x-shader/x-vertex">
+            #version 300 es
+
+            in vec4 aPosition;
+            in vec4 aColor;
+            out vec4 vColor;
+
+            void main() {
+                gl_Position = aPosition;
+                vColor = aColor;
+            }
+        </script>
+
+        <script id="fragment-shader" type="x-shader/x-fragment">
+            #version 300 es
+
+            precision highp float;
+
+            out vec4 fColor;
+            in vec4 vColor;
+
+            void main() {
+                fColor = vColor;
+            }
+        </script>
+
+        <script src="common/initShaders.js"></script>
+        <script src="common/MV.js"></script>
+        <script src="triangle.js"></script>
+        <script src="sierpinski.js"></script>
+    </body>
+</html>
