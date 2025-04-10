@@ -1,5 +1,5 @@
 body{
-    height: 80vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -10,12 +10,26 @@ body{
 
 .container{
     display: flex;
-    flex-direction: column;
     align-items: start;
     justify-content: center;
+    flex-direction: column;
+    border: 1px solid white;
+    padding: 20px;
+}
 
-    border: 2px solid white;
-    padding: 25px 50px;
+.activitie{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-inline: 5px;
+    border: 1px solid white;
+}
+
+.activitie .activitie-title{
+    font-weight: bold;
+    padding: 5px 10px;
+    border-bottom: 1px solid white;
 }
 
 .container a{
