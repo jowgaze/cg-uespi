@@ -1,76 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SIERPINSKI TRIANGLE</title>
-        <link rel="stylesheet" href="../style/style.css">
 
-        <script src="MV.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <p>Execute o código no console utilizando a função <strong>sierpinski(n)</strong>, onde <strong>n</strong> é a quantidade de pontos.</p> 
-            <div class="home">
-                <a href="../index.html">Voltar</a>
-            </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIERPINSKI TRIANGLE</title>
+    <link rel="stylesheet" href="../style/style.css">
+
+    <script src="../common/MV.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <p>Execute o código no console utilizando a função <strong>sierpinski(n)</strong>, onde <strong>n</strong> é a
+            quantidade de pontos.</p>
+        <div class="home">
+            <a href="../index.html">Voltar</a>
         </div>
-        
+    </div>
 
-        <script>
-            var positions = [];
-            var vertex = getTriangle();
 
-            function sierpinski(n) {
-                positions.push(getInitialPoint());
+    <script>
+        var positions = [];
+        var vertex = getTriangle();
 
-                for (let i = 0; i < n - 1; i++) positions.push(getNewPoint());
+        function sierpinski(n) {
+            positions.push(getInitialPoint());
 
-                console.log(positions);
-            }
+            for (let i = 0; i < n - 1; i++) positions.push(getNewPoint());
 
-            function getTriangle() {
-                let triangle = [];
+            console.log(positions);
+        }
 
-                do {
-                    triangle = [
-                        getRandomVertex(),
-                        getRandomVertex(),
-                        getRandomVertex(),
-                    ];
-                } while (!isTriangle(triangle));
+        function getTriangle() {
+            let triangle = [];
 
-                return triangle;
-            }
+            do {
+                triangle = [
+                    getRandomVertex(),
+                    getRandomVertex(),
+                    getRandomVertex(),
+                ];
+            } while (!isTriangle(triangle));
 
-            function getRandomVertex() {
-                return vec2(Math.random() * 2 - 1, Math.random() * 2 - 1);
-            }
+            return triangle;
+        }
 
-            function getInitialPoint() {
-                let u = mult(0.5, add(vertex[0], vertex[1]));
-                let v = mult(0.5, add(vertex[0], vertex[2]));
-                return mult(0.5, add(u, v));
-            }
+        function getRandomVertex() {
+            return vec2(Math.random() * 2 - 1, Math.random() * 2 - 1);
+        }
 
-            function getNewPoint() {
-                let i = positions.length - 1;
-                let j = Math.floor(Math.random() * 3);
-                return mult(0.5, add(positions[i], vertex[j]));
-            }
+        function getInitialPoint() {
+            let u = mult(0.5, add(vertex[0], vertex[1]));
+            let v = mult(0.5, add(vertex[0], vertex[2]));
+            return mult(0.5, add(u, v));
+        }
 
-            function isTriangle(triangle) {
-                let a = triangle[0];
-                let b = triangle[1];
-                let c = triangle[2];
+        function getNewPoint() {
+            let i = positions.length - 1;
+            let j = Math.floor(Math.random() * 3);
+            return mult(0.5, add(positions[i], vertex[j]));
+        }
 
-                let ab = vec2(b[0] - a[0], b[1] - a[1]);
-                let ac = vec2(c[0] - a[0], c[1] - a[1]);
+        function isTriangle(triangle) {
+            let a = triangle[0];
+            let b = triangle[1];
+            let c = triangle[2];
 
-                let crossProduct = ab[0] * ac[1] - ab[1] * ac[0];
+            let ab = vec2(b[0] - a[0], b[1] - a[1]);
+            let ac = vec2(c[0] - a[0], c[1] - a[1]);
 
-                return crossProduct !== 0;
-            }
-        </script>
-    </body>
+            let crossProduct = ab[0] * ac[1] - ab[1] * ac[0];
+
+            return crossProduct !== 0;
+        }
+    </script>
+</body>
+
 </html>
