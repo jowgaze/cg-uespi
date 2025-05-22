@@ -42,3 +42,11 @@ body{
     display: flex;
     justify-content: end;
 }
+
+.container-button{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    width: 100%;
+    margin: 20px 0px 10px 0px;
+}
